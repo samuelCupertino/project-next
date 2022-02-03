@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
-import styles from '../styles/Home.module.css'
+import { Icon } from '../components/atoms'
+
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
-      ola mundo
+    <div>
+      <Icon></Icon>
     </div>
   )
 }
