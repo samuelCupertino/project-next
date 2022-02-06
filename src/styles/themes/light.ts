@@ -1,3 +1,5 @@
+import { utils } from '../utils'
+
 export const light = {
     title: 'light',
     
@@ -11,5 +13,7 @@ export const light = {
         textPrimary: '#ffffff',
         textSecondary: '#c4c3ce',
         textTertiary: '#a09fad',
-    }
+    },
+
+    utils
 }

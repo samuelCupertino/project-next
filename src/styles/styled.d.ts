@@ -14,5 +14,9 @@ declare module 'styled-components' {
             textSecondary: string
             textTertiary: string
         }
+        utils: {
+            applySuffix(prop:number|string|undefined, suffix='px'): string,
+            clockProps(props:(number|string)[] = [], suffix:string='px'): string
+        }
     }
 }

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Container } from './styles'
 
+import { FavoriteBar, Header, ProfileBar, MainListRepos } from '../../organisms'
+
 export const Home: React.FC = () => {
   return (
     <Container>
-      <aside className="favorites">fav</aside>
-      <header>search</header>
-      <main>
-        profiles
-      </main>
-      <aside className="profile">my Profile</aside>
+      <FavoriteBar />
+      <Header />
+      <ProfileBar />
+      <MainListRepos />
     </Container>
   )
 }
