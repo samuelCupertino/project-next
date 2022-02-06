@@ -1,23 +1,26 @@
 import React from 'react'
+import { IRepos } from '../../../services/api'
+
 import { Container } from './styles'
 import { Title, Text } from '../../atoms'
 
 interface ICardReposProps {
-  margin?: number[]
+  margin?: number[],
+  repos: IRepos
 }
 
-export const CardRepos: React.FC<ICardReposProps> = ({ margin }) => {
+export const CardRepos: React.FC<ICardReposProps> = ({ margin, repos }) => {
   return (
     <Container margin={margin}>
       <Title 
         color="textSecondary" 
         margin={[0,0,10,0]}
         fontSize={12}
-      >aluracord-matrix</Title>
+      >{repos.name}</Title>
       <Text 
         color="textTertiary" 
         fontSize={10}
-      >Projeto desenvolvido durante a imersão React com a @alura @omariosouto @peas.</Text>
+      >{repos.description}</Text>
     </Container>
   )
 }

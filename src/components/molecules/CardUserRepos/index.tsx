@@ -48,7 +48,6 @@ export const CardUserRepos: React.FC<ICardUserProps> = ({ margin }) => {
         <Text 
           color="textTertiary" 
           fontSize={10}
-          cursor="pointer" 
         >Projeto desenvolvido durante a imersão React com a @alura @omariosouto @peas.</Text>
       </Wrapper>
     </Container>

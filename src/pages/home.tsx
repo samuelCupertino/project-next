@@ -1,9 +1,33 @@
-import type { NextPage } from 'next'
-import { Home } from '../components/templates'
+import type { GetStaticProps, NextPage } from 'next'
+import { getFollowingRepos, getUserProfile } from '../services/api'
 
-const HomePage: NextPage = () => {
+import { Home, IHomeProps } from '../components/templates'
+
+
+
+export const getStaticProps:GetStaticProps<IHomeProps> = async () => {
+  const followingRepos = await getFollowingRepos('samuelCupertino')
+  const userProfile = await getUserProfile('samuelCupertino')
+
+  return {
+    props: {
+      followingRepos,
+      userProfile
+    },
+    revalidate: 20
+  }
+}
+
+
+const HomePage: NextPage<IHomeProps> = (props) => {
   return (
-    <Home/>
+    <>
+      <div style={{height:50, overflow:'scroll'}}>test: {JSON.stringify(props.followingRepos)}</div>
+      <Home 
+        followingRepos={props.followingRepos}
+        userProfile={props.userProfile}
+      />
+    </>
   )
 }
 
