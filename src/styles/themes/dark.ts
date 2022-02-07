@@ -4,8 +4,8 @@ export const dark = {
     title: 'dark',
     
     colors: {
-        primary: '#ef1979',
-        secondary: '#ba46e2',
+        primary: '#4078c0',//'#ef1979',
+        secondary: '#6cc644',//'#ba46e2',
         tertiary: '#6c697c',
         bgPrimary: '#141128',
         bgSecondary: '#1d1933',

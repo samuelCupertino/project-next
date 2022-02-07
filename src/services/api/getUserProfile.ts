@@ -17,11 +17,16 @@ export interface IUserProfile {
     repos: IRepos[]
 }
 
-export const getUserProfile = async (userLogin: string):Promise<IUserProfile> => {
-    const userRes = await fetch(`https://api.github.com/users/${userLogin}`)
+export const getUserProfile = async (userLogin: string):Promise<IUserProfile> => {    
+    const headers = {
+        headers: {
+            'Authorization': `token ${process.env.GITHUB_TOKEN}`
+        }
+    }
+    const userRes = await fetch(`https://api.github.com/users/${userLogin}`, headers)
     const user = userRes.ok ? await userRes.json() : {}
 
-    const reposRes = await fetch(`https://api.github.com/users/${userLogin}/repos?page=1&per_page=10`)
+    const reposRes = await fetch(`https://api.github.com/users/${userLogin}/repos?page=1&per_page=10`, headers)
     const reposData = await reposRes.json()
     const arrRepos = Array.isArray(reposData) ? reposData : []
 

@@ -13,9 +13,16 @@ interface ICardUserProps {
 export const CardUserRepos: React.FC<ICardUserProps> = ({ margin, repos }) => {
   return (
     <Container margin={margin}>
-      <Wrapper gap={10} width="100%" justifyContent="flex-start">
+      <Wrapper gap={15} width="calc(100% - 100px)" justifyContent="flex-start">
         <Icon iconName="HiOutlineHeart" fontSize={28} color="primary" cursor="pointer" />
-        <Icon iconName="HiOutlineStar" fontSize={28} color="primary" cursor="pointer" />
+        <Wrapper gap={5} justifyContent="flex-start">
+          <Icon iconName="HiOutlineStar" fontSize={28} color="primary" cursor="pointer" />
+          <Text fontSize={14} color="textTertiary">{ repos.stars }</Text>
+        </Wrapper>
+        <Wrapper gap={5} justifyContent="flex-start">
+          <Icon iconName="HiOutlineShare" fontSize={28} color="primary" cursor="pointer" rotate={270}/>
+          <Text fontSize={14} color="textTertiary">{ repos.forks }</Text>
+        </Wrapper>
       </Wrapper>
 
       <Wrapper 

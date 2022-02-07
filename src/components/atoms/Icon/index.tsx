@@ -15,13 +15,14 @@ interface IIconProps{
   fontSize?: number
   padding?: number[]
   cursor?: 'pointer' | 'default'
+  rotate?: number
 }
 
-export const Icon: React.FC<IIconProps> = ({ iconName, padding, color, cursor, ...props }) => {
+export const Icon: React.FC<IIconProps> = ({ iconName, padding, color, cursor, rotate, ...props }) => {
   const IconComponent = getIconByName(iconName)
 
   return ( 
-    <Container padding={padding} color={color} cursor={cursor}>
+    <Container padding={padding} color={color} cursor={cursor} rotate={rotate}>
       <IconComponent fontSize={14} {...props} display="flex"/> 
     </Container>
   )
