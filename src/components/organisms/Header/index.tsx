@@ -2,7 +2,10 @@ import React from 'react'
 import { Container } from './styles'
 import { Image, Icon } from '../../atoms'
 
-export const Header: React.FC = () => {
+interface IHeaderProps {
+  handleProfileBar: () => void
+}
+export const Header: React.FC<IHeaderProps> = ({ handleProfileBar }) => {
 
   return (
     <Container>
@@ -12,14 +15,14 @@ export const Header: React.FC = () => {
         color="tertiary" 
         padding={[15]}
       />
-      <Image 
-        src="/github-dark.png" 
-        alt="Logo Github"
-        borderRadius="50%"
-        opacity={0.85}
-        height="100%"
-        aspectRatio={1}
+      <Icon 
+        iconName="HiMenuAlt1"  
+        fontSize={30} 
+        color="tertiary" 
+        cursor="pointer"
+        padding={[15]}
         margin={[0,0,0,'auto']}
+        onClick={handleProfileBar}
       />
     </Container>
   )

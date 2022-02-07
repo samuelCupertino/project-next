@@ -16,7 +16,7 @@ export const Container = styled.div`
 
     @media (max-width: 800px) {
         grid-template-areas: 
-            'favorites header profile' 
+            'favorites header .' 
             'favorites main profile';
         grid-template-columns: 90px calc(100vw - 150px) 300px;
         grid-template-rows: 60px calc(100vh - 120px);

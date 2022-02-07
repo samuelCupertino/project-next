@@ -8,4 +8,13 @@ export const Container = styled.header`
 
     background: ${props => props.theme.colors.bgSecondary};
     border-radius: 20px;
+
+    .icon-HiMenuAlt1 {
+        display: none;
+    }
+    @media (max-width: 800px) {
+        .icon-HiMenuAlt1 {
+            display: flex;
+        }
+    }
 `

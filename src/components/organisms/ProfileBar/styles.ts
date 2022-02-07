@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Container = styled.aside`
+interface IContainerProps {
+    isOpen?: boolean
+}
+
+export const Container = styled.aside<IContainerProps>`
     grid-area: profile;
     display: flex;
     flex-direction: column;
@@ -9,13 +13,16 @@ export const Container = styled.aside`
     border-radius: 30px;   
     position: relative;
 
-    background: ${props => props.theme.colors.bgSecondary};
-
-    /* position: absolute;
-    top: 20px;
-    right: 25px;
+    background: ${({ theme }) => theme.colors.bgSecondary};
+    overflow: scroll;
     z-index: 2;
-    width: 300px;
-    height: calc(100% - 40px);
-    border: 3px solid ${({ theme }) => theme.colors.bgTertiary}; */
+    transition: 0.75s ease-in-out;
+
+
+    @media (max-width: 800px) {
+        transform: translateX(${({ isOpen=true }) => isOpen ? '-320px' : '20px'});
+        border: 3px solid ${({ theme }) => theme.colors.bgTertiary};
+
+        filter: drop-shadow(-30px 0px 10px ${({ theme }) => theme.colors.bgPrimary});
+    }
 `

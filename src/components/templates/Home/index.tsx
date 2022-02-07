@@ -10,11 +10,13 @@ export interface IHomeProps {
 }
 
 export const Home: React.FC<IHomeProps> = ({ followingRepos, userProfile }) => {
+  const [showProfileBar, setShowProfileBar] = React.useState(true)
+  
   return (
     <Container>
       <FavoriteBar />
-      <Header />
-      <ProfileBar userProfile={userProfile} />
+      <Header handleProfileBar={() => setShowProfileBar(!showProfileBar)}/>
+      <ProfileBar userProfile={userProfile} isOpen={showProfileBar}/>
       <MainListRepos followingRepos={followingRepos} />
     </Container>
   )

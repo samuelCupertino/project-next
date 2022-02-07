@@ -6,13 +6,14 @@ import { Icon, Image, Text, Wrapper, Scroll } from '../../atoms'
 import { CardRepos } from '../../molecules'
 
 interface IProfileBarProps {
-  userProfile: IUserProfile
+  userProfile: IUserProfile,
+  isOpen?: boolean
 }
 
-export const ProfileBar: React.FC<IProfileBarProps> = ({ userProfile }) => {
+export const ProfileBar: React.FC<IProfileBarProps> = ({ userProfile, isOpen }) => {
 
   return (
-    <Container>
+    <Container isOpen={isOpen}>
       <Image 
         src={userProfile.avatar}
         alt="Foto de perfil do usuário."
