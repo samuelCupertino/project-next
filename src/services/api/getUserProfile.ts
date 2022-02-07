@@ -21,7 +21,7 @@ export const getUserProfile = async (userLogin: string):Promise<IUserProfile> =>
     const userRes = await fetch(`https://api.github.com/users/${userLogin}`)
     const user = userRes.ok ? await userRes.json() : {}
 
-    const reposRes = await fetch(`https://api.github.com/users/${userLogin}/repos`)
+    const reposRes = await fetch(`https://api.github.com/users/${userLogin}/repos?page=1&per_page=10`)
     const reposData = await reposRes.json()
     const arrRepos = Array.isArray(reposData) ? reposData : []
 

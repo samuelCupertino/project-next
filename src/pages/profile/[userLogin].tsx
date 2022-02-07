@@ -30,14 +30,13 @@ export const getStaticProps:GetStaticProps = async (context) => {
       followingRepos,
       userProfile
     },
-    revalidate: 10
+    revalidate: 86400
   }
 }
 
 const HomePage: NextPage<IHomeProps> = (props) => {
   return (
     <>
-      <div style={{height:50, overflow:'scroll'}}>test: {JSON.stringify(props)}</div>
       {props.userProfile && props.followingRepos && (
         <Home 
           followingRepos={props.followingRepos}

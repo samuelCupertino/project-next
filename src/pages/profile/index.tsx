@@ -1,5 +1,4 @@
-import type { GetStaticProps, GetStaticPaths, NextPage } from 'next'
-import { ParsedUrlQuery } from 'querystring'
+import type { GetStaticProps, NextPage } from 'next'
 
 import { getFollowingRepos, getUserProfile } from '../../services/api'
 
@@ -23,7 +22,6 @@ export const getStaticProps:GetStaticProps = async () => {
 const HomePage: NextPage<IHomeProps> = (props) => {
   return (
     <>
-      <div style={{height:50, overflow:'scroll'}}>test: {JSON.stringify(props)}</div>
       {props.userProfile && props.followingRepos && (
         <Home 
           followingRepos={props.followingRepos}

@@ -6,6 +6,7 @@ interface ITextComponentProps {
     margin?: number[]
     padding?: number[]
     cursor?: 'pointer' | 'default'
+    maxLine?: number
 }
 
 export const TextComponent = styled.p<ITextComponentProps>`
@@ -14,4 +15,16 @@ export const TextComponent = styled.p<ITextComponentProps>`
     margin: ${({ margin, theme })=> theme.utils.clockProps(margin)};
     padding: ${({ padding, theme })=> theme.utils.clockProps(padding)};
     cursor: ${({ cursor })=> cursor};
+
+
+    ${({ maxLine }) => maxLine && `
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        @supports (-webkit-line-clamp: 2) {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: ${maxLine};
+        }
+    `}
 `

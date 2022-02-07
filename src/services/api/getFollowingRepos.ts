@@ -14,14 +14,18 @@ export interface IFollowingRepos {
 export const getFollowingRepos = async (userLogin: string):Promise<IFollowingRepos[]> => {
     const followingRes = await fetch(`https://api.github.com/users/${userLogin}/following`)
     if(!followingRes.ok) return []
-
     const following = await followingRes.json()
+    const followingLimited = following.slice(0, 10)
 
-    const getReposFromUser = async (userLogin: string):Promise<IFollowingRepos[]> => {
-        const reposRes = await fetch(`https://api.github.com/users/${userLogin}/repos`)
+    const followingRepos:IFollowingRepos[] = await followingLimited.reduce(async (
+        acc: IFollowingRepos[],
+        {login}: Record<string,string>
+    ) => {
+        const reposRes = await fetch(`https://api.github.com/users/${login}/repos`)
+        if(!reposRes.ok) return acc
+
         const [lastRepos] = await reposRes.json()
-        
-        if(!lastRepos) return []
+        if(!lastRepos) return acc
 
         const repos: IFollowingRepos = {
             name: lastRepos.name,
@@ -31,19 +35,13 @@ export const getFollowingRepos = async (userLogin: string):Promise<IFollowingRep
             forks: lastRepos.forks,
             url: lastRepos.html_url,
             owner: {
-                login: lastRepos.owner.login,
-                avatar: lastRepos.owner.avatar_url
+                login: lastRepos.owner?.login,
+                avatar: lastRepos.owner?.avatar_url
             }
         }
 
-        return [ repos ]
-    }
+        return [ ...(await acc), repos ]
+    }, [])
 
-    const followingRepos:Promise<IFollowingRepos>[] = following.reduce(async (acc: IFollowingRepos[], following: Record<string,string>) => {
-        const [lastRepos] = await getReposFromUser(following.login)
-
-        return lastRepos ? [ ...acc, lastRepos ] : acc
-    }, [] as IFollowingRepos[])
-
-    return Array.isArray(followingRepos) ? Promise.all(followingRepos) : []
+    return followingRepos
 }

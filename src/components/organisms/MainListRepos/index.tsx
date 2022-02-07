@@ -3,25 +3,20 @@ import { Container } from './styles'
 import { Scroll, GridFluid } from '../../atoms'
 import { CardUserRepos } from '../../molecules'
 
-import { getFollowingRepos } from '../../../services/api'
+import { IFollowingRepos } from '../../../services/api'
 
+interface IMainListReposProps {
+  followingRepos: IFollowingRepos[]
+}
 
-export const MainListRepos: React.FC = () => {
-  const [repos, setRepos] = useState<any[]>([])
-
-  useEffect(() => {
-    getFollowingRepos('samuelCupertino').then(response => {
-      setRepos(response)
-    })
-  }, [])
-
+export const MainListRepos: React.FC<IMainListReposProps> = ({ followingRepos }) => {
 
   return (
     <Container>
       <Scroll height="100%" gap={20}>
         <GridFluid gap={20} itemMinWidth={270}>
-          {repos.map((repo, index) => (
-            <CardUserRepos key={index} />
+          {followingRepos.map((repos, index) => (
+            <CardUserRepos key={index} repos={repos}/>
           ))}
         </GridFluid>
       </Scroll>

@@ -15,7 +15,7 @@ export const Home: React.FC<IHomeProps> = ({ followingRepos, userProfile }) => {
       <FavoriteBar />
       <Header />
       <ProfileBar userProfile={userProfile} />
-      <MainListRepos />
+      <MainListRepos followingRepos={followingRepos} />
     </Container>
   )
 }

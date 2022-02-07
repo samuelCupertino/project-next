@@ -14,4 +14,7 @@ export const TitleComponent = styled.h1<ITitleComponentProps>`
     margin: ${({ margin, theme })=> theme.utils.clockProps(margin)};
     padding: ${({ padding, theme })=> theme.utils.clockProps(padding)};
     cursor: ${({ cursor })=> cursor};
+
+    text-overflow: ellipsis;
+    overflow: hidden;
 `
