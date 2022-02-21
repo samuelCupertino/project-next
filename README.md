@@ -40,8 +40,8 @@ PRINCIPAIS QUESTIONAMENTOS:
 + Porque React ao invés do vue?
   - O React apresenta uma stack mais consolidada, tendo vários frameworks bem robustos, como o Next.js, 
   enquanto o Vue ainda está evoluído sua stack com frameworks como o Nuxt.js.
-  - Os novos projetos da braip serão mais consistentes, sendo aplicativos mobile desenvolvidos com React Native 
-  e aplicativos web com React, gerando um ecossistema mais amigável para a futura equipe de front-end. 
+  - Os novos projetos com react serão mais consistentes, sendo aplicativos mobile desenvolvidos com React Native 
+  e aplicativos web com React, gerando um ecossistema mais amigável para a equipe de front-end. 
   - O React permitirá ter uma equipe de front-end mais completa, que poderá desenvolver tanto mara web 
   quanto para mobile, já que a curva de aprendizado entre react e react native é mínima, com a adoção 
   de Atomic Design e a estrutura aqui apresentada, essa curva de aprendizado se torna praticamente nula.
